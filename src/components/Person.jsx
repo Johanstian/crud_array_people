@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Person = ({ id, name, img, role }) => {
+export const Person = ({ id, name, img, role, handleEdit, handleDelete }) => {
     return (
         <div className='col'>
             <div className="card m-4" style={{width: '18rem'}}>
@@ -11,8 +11,8 @@ export const Person = ({ id, name, img, role }) => {
                         <p className="card-text">{role}</p>
                     </div>
                     <div className='container mb-4'>
-                    <button className="btn btn-primary">Editar</button>
-                    <button className="btn btn-danger ms-1">Borrar</button>
+                    <button className="btn btn-primary" onClick={handleEdit}>Editar</button>
+                    <button className="btn btn-danger ms-1" onClick={() => handleDelete(id)} data-bs-toggle="modal" data-bs-target="#deleteModal">Borrar</button>
                     </div>
             </div>
         </div>
@@ -24,4 +24,6 @@ Person.propTypes = {
     name: PropTypes.string,
     img: PropTypes.string,
     role: PropTypes.string,
+    handleEdit: PropTypes.func,
+    handleDelete: PropTypes.func
 }
